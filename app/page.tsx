@@ -628,7 +628,7 @@ export default function PortfolioPage() {
       </footer>
 
       {/* Avatar */}
-      <div className="fixed bottom-10 right-4 md:right-20 z-100 w-24 h-24 md:w-48 md:h-48">
+      <div className="fixed bottom-10 right-4 md:right-20 z-100 w-24 h-24 md:w-100 md:h-100">
         <Image
           src="/avatar.gif"
           alt="Avatar"
