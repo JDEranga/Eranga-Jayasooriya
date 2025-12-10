@@ -628,15 +628,16 @@ export default function PortfolioPage() {
       </footer>
 
       {/* Avatar */}
-      <Image
-        src="/avatar.gif"
-        alt="Avatar"
-        width={200}
-        height={200}
-        className="fixed bottom-10 right-20 z-100 transition-opacity duration-1000"
-        style={{ opacity: avatarOpacity }}
-        unoptimized
-      />
+      <div className="fixed bottom-10 right-4 md:right-20 z-100 w-24 h-24 md:w-48 md:h-48">
+        <Image
+          src="/avatar.gif"
+          alt="Avatar"
+          layout="fill"
+          className="transition-opacity duration-1000"
+          style={{ opacity: avatarOpacity }}
+          unoptimized
+        />
+      </div>
 
       {/* Modal for Plant Disease App */}
       {isModalOpen && (
