@@ -555,7 +555,7 @@ export default function PortfolioPage() {
                     >
                       <TiltedCard
                         imageSrc="/queens.png"
-                        altText="Queens App Image"
+                        altText="Queens App  Image"
                         containerHeight="100%"
                         containerWidth="100%"
                         imageHeight="100%"
