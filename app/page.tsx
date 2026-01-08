@@ -226,6 +226,18 @@ export default function PortfolioPage() {
       description: "AI-powered mobile application that delivers precise calorie counts, complete nutritional breakdowns from analyzing food images",
       tech: ["Flutter", "Dart", "Andoid/iOS"],
       link: "#"
+    },
+    {
+      title: "Thurusisila",
+      description: "",
+      tech: [],
+      link: "https://thurusisila.vercel.app/"
+    },
+    {
+      title: "AI Queens",
+      description: "",
+      tech: [],
+      link: "https://queens-residence.vercel.app/"
     }
   ];
 
@@ -509,86 +521,136 @@ export default function PortfolioPage() {
             <h2 className="text-4xl font-bold text-gray-600">Projects</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <div 
-                key={index}
-                className="relative bg-white/70 backdrop-blur-sm rounded-xl p-6 hover:bg-white/80 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <Code2 className="text-sky-600 group-hover:scale-110 transition-transform duration-300" size={28} />
-                  <a href={project.link} className="text-gray-400 hover:text-sky-600 transition-colors">
-                    <ExternalLink size={20} />
-                  </a>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-sky-600 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span 
-                      key={tech}
-                      className="text-xs px-3 py-1 bg-sky-500/20 rounded-full text-sky-800"
+            {projects.map((project, index) => {
+              if (project.title === "Thurusisila") {
+                return (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" key={index}>
+                    <div 
+                      className="relative bg-white/70 backdrop-blur-sm rounded-xl hover:bg-white/80 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group"
+                      style={{ height: '200px' }}
                     >
-                      {tech}
-                    </span>
-                  ))}
+                      <TiltedCard
+                        imageSrc="/thurusisila.png"
+                        altText="Thurusisila App Image"
+                        containerHeight="100%"
+                        containerWidth="100%"
+                        imageHeight="100%"
+                        imageWidth="100%"
+                        scaleOnHover={1.05}
+                        rotateAmplitude={10}
+                        showMobileWarning={false}
+                        showTooltip={false}
+                        displayOverlayContent={false}
+                      />
+                    </div>
+                  </a>
+                );
+              }
+              if (project.title === "AI Queens") {
+                return (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" key={index}>
+                    <div 
+                      className="relative bg-white/70 backdrop-blur-sm rounded-xl hover:bg-white/80 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group"
+                      style={{ height: '200px' }}
+                    >
+                      <TiltedCard
+                        imageSrc="/queens.png"
+                        altText="Queens App Image"
+                        containerHeight="100%"
+                        containerWidth="100%"
+                        imageHeight="100%"
+                        imageWidth="100%"
+                        scaleOnHover={1.05}
+                        rotateAmplitude={10}
+                        showMobileWarning={false}
+                        showTooltip={false}
+                        displayOverlayContent={false}
+                      />
+                    </div>
+                  </a>
+                );
+              }
+              return (
+                <div 
+                  key={index}
+                  className="relative bg-white/70 backdrop-blur-sm rounded-xl p-6 hover:bg-white/80 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <Code2 className="text-sky-600 group-hover:scale-110 transition-transform duration-300" size={28} />
+                    <a href={project.link} className="text-gray-400 hover:text-sky-600 transition-colors">
+                      <ExternalLink size={20} />
+                    </a>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-sky-600 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span 
+                        key={tech}
+                        className="text-xs px-3 py-1 bg-sky-500/20 rounded-full text-sky-800"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  {project.title === "AI Plant Disease" && (
+                    <div onClick={() => setIsModalOpen(true)} className="absolute inset-0 z-10 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <TiltedCard
+                        imageSrc="/plantapp.png"
+                        altText="Plant Disease App Thumbnail"
+                        containerHeight="100%"
+                        containerWidth="100%"
+                        imageHeight="100%"
+                        imageWidth="100%"
+                        scaleOnHover={1.05}
+                        rotateAmplitude={10}
+                        showMobileWarning={false}
+                        showTooltip={false}
+                        displayOverlayContent={false}
+                      />
+                    </div>
+                  )}
+                  {project.title === " AI Skin Care" && (
+                    <div onClick={() => setSelectedImage("/skincare.png")} className="absolute inset-0 z-10 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <TiltedCard
+                        imageSrc="/skincare.png"
+                        altText="Skin Care App Thumbnail"
+                        containerHeight="100%"
+                        containerWidth="100%"
+                        imageHeight="100%"
+                        imageWidth="100%"
+                        scaleOnHover={1.05}
+                        rotateAmplitude={10}
+                        showMobileWarning={false}
+                        showTooltip={false}
+                        displayOverlayContent={false}
+                      />
+                    </div>
+                  )}
+                  {project.title === " AI Food Analysis" && (
+                    <div onClick={() => setIsFoodModalOpen(true)} className="absolute inset-0 z-10 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <TiltedCard
+                        imageSrc="/foodanalysis.png"
+                        altText="Food Analysis App Thumbnail"
+                        containerHeight="100%"
+                        containerWidth="100%"
+                        imageHeight="100%"
+                        imageWidth="100%"
+                        scaleOnHover={1.05}
+                        rotateAmplitude={10}
+                        showMobileWarning={false}
+                        showTooltip={false}
+                        displayOverlayContent={false}
+                      />
+                    </div>
+                  )}
                 </div>
-                {project.title === "AI Plant Disease" && (
-                  <div onClick={() => setIsModalOpen(true)} className="absolute inset-0 z-10 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <TiltedCard
-                      imageSrc="/plantapp.png"
-                      altText="Plant Disease App Thumbnail"
-                      containerHeight="100%"
-                      containerWidth="100%"
-                      imageHeight="100%"
-                      imageWidth="100%"
-                      scaleOnHover={1.05}
-                      rotateAmplitude={10}
-                      showMobileWarning={false}
-                      showTooltip={false}
-                      displayOverlayContent={false}
-                    />
-                  </div>
-                )}
-                {project.title === " AI Skin Care" && (
-                  <div onClick={() => setSelectedImage("/skincare.png")} className="absolute inset-0 z-10 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <TiltedCard
-                      imageSrc="/skincare.png"
-                      altText="Skin Care App Thumbnail"
-                      containerHeight="100%"
-                      containerWidth="100%"
-                      imageHeight="100%"
-                      imageWidth="100%"
-                      scaleOnHover={1.05}
-                      rotateAmplitude={10}
-                      showMobileWarning={false}
-                      showTooltip={false}
-                      displayOverlayContent={false}
-                    />
-                  </div>
-                )}
-                {project.title === " AI Food Analysis" && (
-                  <div onClick={() => setIsFoodModalOpen(true)} className="absolute inset-0 z-10 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <TiltedCard
-                      imageSrc="/foodanalysis.png"
-                      altText="Food Analysis App Thumbnail"
-                      containerHeight="100%"
-                      containerWidth="100%"
-                      imageHeight="100%"
-                      imageWidth="100%"
-                      scaleOnHover={1.05}
-                      rotateAmplitude={10}
-                      showMobileWarning={false}
-                      showTooltip={false}
-                      displayOverlayContent={false}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
