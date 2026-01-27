@@ -521,14 +521,14 @@ export default function PortfolioPage() {
     },
     {
       title: "Thurusisila",
-      description: "Modern web application with elegant design",
+      description: "Modern web site with elegant design",
       tech: ["Next.js", "React", "Tailwind"],
       link: "https://thurusisila.vercel.app/",
       image: "/thurusisila.png"
     },
     {
       title: "Queen's Residence",
-      description: "Intelligent residence management platform",
+      description: "Modern web site with elegant design",
       tech: ["Next.js", "React", "Tailwind"],
       link: "https://queens-residence.vercel.app/",
       image: "/queens.png"
