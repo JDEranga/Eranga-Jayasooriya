@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import Image from 'next/image';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Briefcase, User, ChevronDown, Menu, X, Sparkles, Zap, Brain, Palette, Database, Globe, ArrowRight, Download, Send } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Briefcase, User, ChevronDown, Menu, X, Sparkles, Zap, Brain, Palette, Database, Globe, ArrowRight, Download, Send, Calendar, Building2, MapPin, Award } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useInView } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -452,6 +452,7 @@ export default function PortfolioPage() {
   const homeRef = useRef<HTMLElement | null>(null);
   const aboutRef = useRef<HTMLElement | null>(null);
   const projectsRef = useRef<HTMLElement | null>(null);
+  const experienceRef = useRef<HTMLElement | null>(null);
   const contactRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -459,11 +460,14 @@ export default function PortfolioPage() {
       setScrollY(window.scrollY);
       const aboutTop = aboutRef.current?.offsetTop || 0;
       const projectsTop = projectsRef.current?.offsetTop || 0;
+      const experienceTop = experienceRef.current?.offsetTop || 0;
       const contactTop = contactRef.current?.offsetTop || 0;
       const scrollPosition = window.scrollY + 100;
 
       if (scrollPosition >= contactTop) {
         setActiveSection('contact');
+      } else if (scrollPosition >= experienceTop) {
+        setActiveSection('experience');
       } else if (scrollPosition >= projectsTop) {
         setActiveSection('projects');
       } else if (scrollPosition >= aboutTop) {
@@ -497,21 +501,21 @@ export default function PortfolioPage() {
     {
       title: "AI Plant Disease",
       description: "AI-powered mobile application that diagnoses plant diseases from images",
-      tech: ["Flutter", "Dart", "Android/iOS"],
+      tech: ["Flutter", "Dart", "Android/iOS", "AI"],
       link: "#",
       image: "/plantapp.png"
     },
     {
       title: "AI Skin Care",
       description: "AI-powered mobile application that delivers dermatologist-level analysis from images",
-      tech: ["Flutter", "Dart", "Android/iOS"],
+      tech: ["Flutter", "Dart", "Android/iOS", "AI"],
       link: "#",
       image: "/skincare.png"
     },
     {
       title: "AI Food Analysis",
       description: "AI-powered mobile application that delivers precise calorie counts, complete nutritional breakdowns from analyzing food images",
-      tech: ["Flutter", "Dart", "Android/iOS"],
+      tech: ["Flutter", "Dart", "Android/iOS", "AI"],
       link: "#",
       image: "/foodanalysis.png"
     },
@@ -544,10 +548,41 @@ export default function PortfolioPage() {
     { name: "AI Enthusiast", icon: Brain }
   ];
 
+  const experiences = [
+    {
+      title: "Software Engineer",
+      company: "CodeGen International AbsolX (Rise AI)",
+      location: "Kandy, Sri Lanka",
+      period: "",
+      description: "Leading development of AI-powered mobile applications using Flutter and integrating machine learning models for real-time image analysis.",
+      achievements: ["Developed 3+ AI mobile apps", "Improved app performance by 40%", "Led team of 5 developers"],
+      icon: Code2
+    },
+    {
+      title: "Software Developer",
+      company: "Tech Gallery Pvt Ltd",
+      location: "Anuradhapura, Sri Lanka",
+      period: "",
+      description: "As a Software Developer at Tech Gallery Pvt Ltd, I focus on web and Android development, hardware and system repairs. I build responsive apps and troubleshoot technical issues to deliver effective software solutions.",
+      achievements: ["Developed 5+ web and mobile apps", "Resolved 200+ hardware issues", "Enhanced system performance by 30%"],
+      icon: Briefcase
+    },
+    {
+      title: "Developer | Graphics Designer",
+      company: " Freelance",
+      location: "Sri Lanka",
+      period: "Since 2015",
+      description: " I have been working as a freelancer developer since 2015.",
+      achievements: ["Web Development", " Android Development", "Graphic Design", "Freelance Projects", "UI/UX", "Client Satisfaction"],
+      icon: Zap
+    }
+  ];
+
   const navItems = [
     { id: 'home', label: 'Home', ref: homeRef },
     { id: 'about', label: 'About', ref: aboutRef },
     { id: 'projects', label: 'Projects', ref: projectsRef },
+    { id: 'experience', label: 'Experience', ref: experienceRef },
     { id: 'contact', label: 'Contact', ref: contactRef }
   ];
 
@@ -948,6 +983,103 @@ export default function PortfolioPage() {
                 }}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" ref={experienceRef} className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <SectionHeader 
+            icon={Award} 
+            title="Experience" 
+            subtitle="My professional journey"
+            titleClassName="bg-gradient-to-r from-sky-800 to-sky-600 bg-clip-text text-transparent"
+          />
+          
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-sky-500 via-sky-400 to-sky-300 transform md:-translate-x-1/2" />
+            
+            {experiences.map((exp, index) => {
+              const IconComponent = exp.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                >
+                  {/* Timeline Dot with Icon */}
+                  <motion.div 
+                    className="absolute left-8 md:left-1/2 transform -translate-x-1/2 z-10"
+                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-sky-600 rounded-full flex items-center justify-center shadow-lg shadow-sky-500/30">
+                      <IconComponent className="text-white" size={24} />
+                    </div>
+                  </motion.div>
+                  
+                  {/* Content Card */}
+                  <motion.div 
+                    className={`ml-28 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-lg hover:border-sky-100 transition-all duration-300">
+                      {/* Period Badge */}
+                      <motion.div 
+                        className="inline-flex items-center gap-2 px-3 py-1 bg-sky-50 text-sky-600 rounded-full text-sm font-medium mb-3"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <Calendar size={14} />
+                        {exp.period}
+                      </motion.div>
+                      
+                      <h3 className="text-xl font-bold text-slate-800 mb-1">{exp.title}</h3>
+                      
+                      <div className="flex items-center gap-4 text-slate-500 text-sm mb-3">
+                        <span className="flex items-center gap-1">
+                          <Building2 size={14} />
+                          {exp.company}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <MapPin size={14} />
+                          {exp.location}
+                        </span>
+                      </div>
+                      
+                      <p className="text-slate-600 mb-4 leading-relaxed">{exp.description}</p>
+                      
+                      {/* Achievements */}
+                      <div className="space-y-2">
+                        {exp.achievements.map((achievement, achIndex) => (
+                          <motion.div
+                            key={achIndex}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: achIndex * 0.1 + 0.3 }}
+                            className="flex items-center gap-2 text-sm text-slate-500"
+                          >
+                            <motion.div
+                              animate={{ scale: [1, 1.2, 1] }}
+                              transition={{ duration: 2, repeat: Infinity, delay: achIndex * 0.3 }}
+                            >
+                              <Sparkles size={12} className="text-sky-500" />
+                            </motion.div>
+                            {achievement}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
