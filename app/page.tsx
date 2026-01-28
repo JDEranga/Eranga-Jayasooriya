@@ -1105,15 +1105,27 @@ export default function PortfolioPage() {
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
             
-            <motion.a
-              href="mailto:jaderanga@gmail.com"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.60 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-800 text-white rounded-full font-semibold shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
-            >
-              <Mail size={20} />
-              Say Hello
-            </motion.a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <motion.a
+                href="mailto:jaderanga@gmail.com"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.60 }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-800 text-white rounded-full font-semibold shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
+              >
+                <Mail size={20} />
+                Say Hello
+              </motion.a>
+              
+              <motion.a
+                href="tel:+94719671533"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.60 }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-800 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300"
+              >
+                <Send size={20} />
+                Contact Me: (+94) 71-967-1533
+              </motion.a>
+            </div>
             
             <div className="mt-10 pt-8 border-t border-slate-100">
               <p className="text-sm text-slate-400 mb-4">Or find me on</p>
