@@ -7,6 +7,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useInView } from 'f
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import ChatBot from './components/ChatBot';
 
 // 3D Laptop Component
 function Laptop() {
@@ -1151,7 +1152,7 @@ export default function PortfolioPage() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: avatarOpacity, scale: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="fixed bottom-10 right-4 md:right-10 z-40 w-20 h-20 md:w-32 md:h-32"
+        className="fixed bottom-28 right-6 z-40 w-20 h-20 md:w-24 md:h-24"
       >
         <Image
           src="/avatar.gif"
@@ -1162,6 +1163,9 @@ export default function PortfolioPage() {
           unoptimized
         />
       </motion.div>
+
+      {/* ChatBot */}
+      <ChatBot />
 
       {/* Modal for Plant Disease App */}
       <AnimatePresence>
