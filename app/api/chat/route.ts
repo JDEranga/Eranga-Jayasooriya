@@ -16,8 +16,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Use gemini-1.5-flash (correct model name for free tier)
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
     
     console.log('Making request to Gemini API...');
 
@@ -64,28 +63,25 @@ export async function POST(request: NextRequest) {
       }
     );
 
-    const data = await response.json();
-
-    console.log('Gemini API Response Status:', response.status);
-    console.log('Gemini API Response:', JSON.stringify(data, null, 2));
-
-    // Check for HTTP errors
+    console.log('Response status:', response.status);
+    
     if (!response.ok) {
-      console.error('Gemini API HTTP Error:', response.status, data);
+      const errorData = await response.json();
+      console.error('API Error Response:', JSON.stringify(errorData, null, 2));
       return NextResponse.json(
-        { 
-          error: 'Failed to generate response', 
-          details: data.error?.message || `HTTP ${response.status}`,
-          status: response.status 
-        },
+        { error: 'API request failed', details: errorData },
         { status: response.status }
       );
     }
 
+    const data = await response.json();
+
+    console.log('Gemini API Response:', JSON.stringify(data, null, 2));
+
     if (data.error) {
       console.error('Gemini API Error:', data.error);
       return NextResponse.json(
-        { error: 'Failed to generate response', details: data.error.message || data.error },
+        { error: 'Failed to generate response', details: data.error },
         { status: 500 }
       );
     }
