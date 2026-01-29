@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// API Route for chat functionality
 export async function POST(request: NextRequest) {
   try {
     const { message, context } = await request.json();
@@ -8,8 +9,10 @@ export async function POST(request: NextRequest) {
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
     console.log('API Key exists:', !!GEMINI_API_KEY);
+    console.log('Environment:', process.env.NODE_ENV);
 
     if (!GEMINI_API_KEY) {
+      console.error('GEMINI_API_KEY is not set!');
       return NextResponse.json(
         { error: 'API key not configured' },
         { status: 500 }

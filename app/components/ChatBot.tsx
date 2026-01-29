@@ -133,7 +133,10 @@ export default function ChatBot() {
 
       const data = await response.json();
       
-      if (data.error) {
+      console.log('API Response:', data);
+      
+      if (data.error || !response.ok) {
+        console.error('API Error:', data);
         setMessages(prev => [...prev, { 
           role: 'assistant', 
           content: "I apologize, but I'm having trouble connecting right now. Please feel free to reach out to me directly at jaderanga@gmail.com or call me at (+94) 71-967-1533!" 
@@ -141,7 +144,8 @@ export default function ChatBot() {
       } else {
         setMessages(prev => [...prev, { role: 'assistant', content: data.reply }]);
       }
-    } catch {
+    } catch (error) {
+      console.error('Chat Error:', error);
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: "I apologize, but I'm having trouble connecting right now. Please feel free to reach out to me directly at jaderanga@gmail.com or call me at (+94) 71-967-1533!" 
