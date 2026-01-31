@@ -241,6 +241,335 @@ function FloatingElement({ children, delay = 0 }: { children: React.ReactNode; d
   );
 }
 
+// Animated Background Blobs
+function AnimatedBlobs({ variant = "default" }: { variant?: "default" | "blue" | "cyan" | "purple" }) {
+  // Use consistent sky/cyan color palette across all variants for uniformity
+  const colors = {
+    default: ["from-sky-400/50", "from-cyan-400/45", "from-blue-400/45"],
+    blue: ["from-sky-500/55", "from-cyan-400/50", "from-blue-400/45"],
+    cyan: ["from-cyan-400/50", "from-sky-400/45", "from-teal-400/40"],
+    purple: ["from-sky-400/50", "from-cyan-400/45", "from-blue-500/45"]
+  };
+  const c = colors[variant];
+  
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div
+        animate={{
+          x: [0, 100, 50, 0],
+          y: [0, 50, 100, 0],
+          scale: [1, 1.2, 0.9, 1],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className={`absolute -top-20 -left-20 w-[450px] h-[450px] bg-gradient-to-br ${c[0]} to-transparent rounded-full blur-[80px]`}
+      />
+      <motion.div
+        animate={{
+          x: [0, -80, -40, 0],
+          y: [0, 80, 40, 0],
+          scale: [1, 0.9, 1.1, 1],
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className={`absolute -top-10 -right-20 w-[550px] h-[550px] bg-gradient-to-bl ${c[1]} to-transparent rounded-full blur-[80px]`}
+      />
+      <motion.div
+        animate={{
+          x: [0, 60, -60, 0],
+          y: [0, -60, 60, 0],
+          scale: [1, 1.1, 0.95, 1],
+        }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+        className={`absolute -bottom-20 left-1/3 w-[400px] h-[400px] bg-gradient-to-tr ${c[2]} to-transparent rounded-full blur-[80px]`}
+      />
+      <motion.div
+        animate={{
+          x: [0, -40, 40, 0],
+          y: [0, 40, -40, 0],
+          scale: [1, 1.15, 0.85, 1],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+        className={`absolute top-1/2 -right-10 w-[380px] h-[380px] bg-gradient-to-l ${c[0]} to-transparent rounded-full blur-[80px]`}
+      />
+    </div>
+  );
+}
+
+// Floating Geometric Shapes
+function FloatingShapes() {
+  const shapes = [
+    { type: 'circle', size: 80, x: '10%', y: '20%', delay: 0, duration: 8 },
+    { type: 'square', size: 60, x: '85%', y: '15%', delay: 1, duration: 10 },
+    { type: 'triangle', size: 70, x: '75%', y: '70%', delay: 2, duration: 9 },
+    { type: 'circle', size: 50, x: '20%', y: '80%', delay: 3, duration: 11 },
+    { type: 'square', size: 45, x: '90%', y: '50%', delay: 1.5, duration: 7 },
+    { type: 'circle', size: 65, x: '5%', y: '50%', delay: 2.5, duration: 12 },
+    { type: 'triangle', size: 55, x: '50%', y: '5%', delay: 0.5, duration: 8.5 },
+    { type: 'square', size: 40, x: '30%', y: '90%', delay: 4, duration: 9.5 },
+    { type: 'circle', size: 35, x: '60%', y: '30%', delay: 2, duration: 10 },
+    { type: 'square', size: 50, x: '15%', y: '60%', delay: 1, duration: 11 },
+  ];
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {shapes.map((shape, index) => (
+        <motion.div
+          key={index}
+          className="absolute"
+          style={{ left: shape.x, top: shape.y }}
+          animate={{
+            y: [0, -40, 0],
+            x: [0, 20, 0],
+            rotate: [0, 180, 360],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: shape.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: shape.delay,
+          }}
+        >
+          {shape.type === 'circle' && (
+            <div
+              className="rounded-full border-2 border-sky-400/60 bg-sky-400/20"
+              style={{ width: shape.size, height: shape.size }}
+            />
+          )}
+          {shape.type === 'square' && (
+            <div
+              className="rounded-xl border-2 border-sky-400/60 bg-sky-400/20"
+              style={{ width: shape.size, height: shape.size }}
+            />
+          )}
+          {shape.type === 'triangle' && (
+            <div
+              className="border-l-transparent border-r-transparent border-b-sky-400/60"
+              style={{ 
+                borderLeftWidth: shape.size / 2, 
+                borderRightWidth: shape.size / 2, 
+                borderBottomWidth: shape.size * 0.8,
+              }}
+            />
+          )}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+// Animated Grid Pattern
+function AnimatedGrid() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div
+        animate={{
+          backgroundPosition: ["0px 0px", "40px 40px"],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="absolute inset-0 opacity-50"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(14, 165, 233, 0.2) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(14, 165, 233, 0.2) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+        }}
+      />
+      {/* Additional diagonal lines */}
+      <motion.div
+        animate={{
+          backgroundPosition: ["0px 0px", "60px 60px"],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `
+            linear-gradient(45deg, rgba(14, 165, 233, 0.15) 25%, transparent 25%),
+            linear-gradient(-45deg, rgba(14, 165, 233, 0.15) 25%, transparent 25%)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
+    </div>
+  );
+}
+
+// Animated Particles Background
+function ParticlesBackground({ count = 30 }: { count?: number }) {
+  const particles = React.useMemo(() => {
+    return Array.from({ length: count }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 8 + 4,
+      duration: Math.random() * 8 + 8,
+      delay: Math.random() * 5,
+    }));
+  }, [count]);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full bg-sky-400"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: particle.size,
+            height: particle.size,
+          }}
+          animate={{
+            y: [0, -150, 0],
+            opacity: [0.3, 0.9, 0.3],
+            scale: [0.5, 1.2, 0.5],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: particle.delay,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// Glowing Orbs
+function GlowingOrbs() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.4, 0.7, 0.4],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-56 h-56 bg-sky-400/50 rounded-full blur-[60px]"
+      />
+      <motion.div
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.45, 0.25, 0.45],
+        }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-400/50 rounded-full blur-[60px]"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.4, 1],
+          opacity: [0.35, 0.6, 0.35],
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute top-1/2 right-1/3 w-48 h-48 bg-sky-400/45 rounded-full blur-[60px]"
+      />
+      <motion.div
+        animate={{
+          scale: [1.1, 0.9, 1.1],
+          opacity: [0.4, 0.55, 0.4],
+        }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        className="absolute bottom-1/3 left-1/3 w-44 h-44 bg-cyan-400/45 rounded-full blur-[60px]"
+      />
+    </div>
+  );
+}
+
+// Animated Lines
+function AnimatedLines() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute h-0.5 bg-gradient-to-r from-transparent via-sky-400/70 to-transparent"
+          style={{
+            top: `${15 + i * 14}%`,
+            left: 0,
+            right: 0,
+          }}
+          animate={{
+            scaleX: [0, 1, 0],
+            opacity: [0, 0.8, 0],
+            x: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 6 + i * 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 1,
+          }}
+        />
+      ))}
+      {[...Array(4)].map((_, i) => (
+        <motion.div
+          key={`v-${i}`}
+          className="absolute w-0.5 bg-gradient-to-b from-transparent via-sky-400/60 to-transparent"
+          style={{
+            left: `${20 + i * 20}%`,
+            top: 0,
+            bottom: 0,
+          }}
+          animate={{
+            scaleY: [0, 1, 0],
+            opacity: [0, 0.7, 0],
+            y: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 8 + i * 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 1.5,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// Code Rain Effect
+function CodeRain() {
+  const characters = ['0', '1', '<', '>', '/', '{', '}', '(', ')', ';', '=', '+', '-', '*', '&'];
+  const columns = 20;
+  
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {[...Array(columns)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute text-sky-500/70 font-mono text-sm font-medium"
+          style={{ left: `${(i / columns) * 100}%` }}
+          animate={{
+            y: ['-100%', '100%'],
+            opacity: [0.3, 0.8, 0.3],
+          }}
+          transition={{
+            duration: 8 + Math.random() * 8,
+            repeat: Infinity,
+            ease: "linear",
+            delay: Math.random() * 5,
+          }}
+        >
+          {[...Array(25)].map((_, j) => (
+            <div key={j} className="my-1 text-center">
+              {characters[Math.floor(Math.random() * characters.length)]}
+            </div>
+          ))}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 // Project Card Component
 function ProjectCard({ 
   project, 
@@ -609,6 +938,23 @@ export default function PortfolioPage() {
       {/* Subtle Background Pattern */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgba(148,163,184,0.15)_1px,_transparent_0)] bg-[size:40px_40px]" />
+        {/* Global floating particles */}
+        <motion.div
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%"],
+          }}
+          transition={{
+            duration: 60,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+                             radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                             radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 40%)`,
+          }}
+        />
       </div>
       
       {/* Navigation */}
@@ -736,6 +1082,15 @@ export default function PortfolioPage() {
 
       {/* Hero Section */}
       <section id="home" ref={homeRef} className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <AnimatedBlobs variant="blue" />
+        <FloatingShapes />
+        <ParticlesBackground count={40} />
+        <AnimatedLines />
+        
+        {/* Section Fade Transition - Bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-[5]" />
+        
         {/* 3D Model - Left Side */}
         <motion.div
           initial={{ opacity: 0, x: -100 }}
@@ -881,8 +1236,12 @@ export default function PortfolioPage() {
       </section>
 
       {/* About Section */}
-      <section id="about" ref={aboutRef} className="py-24 px-6 relative">
-        <div className="max-w-4xl mx-auto">
+      <section id="about" ref={aboutRef} className="py-24 px-6 relative overflow-hidden">
+        {/* Animated Background Elements - Same as Hero section */}
+        <FloatingShapes />
+        <ParticlesBackground count={40} />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
           <SectionHeader 
             icon={User} 
             title="About Me" 
@@ -962,8 +1321,17 @@ export default function PortfolioPage() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" ref={projectsRef} className="py-24 px-6 bg-slate-50/50">
-        <div className="max-w-6xl mx-auto">
+      <section id="projects" ref={projectsRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+        {/* Animated Background Elements */}
+        <AnimatedBlobs variant="purple" />
+        <FloatingShapes />
+        <CodeRain />
+        
+        {/* Section Fade Transitions */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-transparent pointer-events-none z-[5]" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-[5]" />
+        
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeader 
             icon={Briefcase} 
             title="Projects" 
@@ -989,8 +1357,17 @@ export default function PortfolioPage() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" ref={experienceRef} className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
+      <section id="experience" ref={experienceRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+        {/* Animated Background Elements */}
+        <AnimatedBlobs variant="default" />
+        <ParticlesBackground count={25} />
+        <AnimatedLines />
+        
+        {/* Section Fade Transitions */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-transparent pointer-events-none z-[5]" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-[5]" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
           <SectionHeader 
             icon={Award} 
             title="Experience" 
@@ -1086,8 +1463,16 @@ export default function PortfolioPage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" ref={contactRef} className="py-24 px-6">
-        <div className="max-w-2xl mx-auto text-center">
+      <section id="contact" ref={contactRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+        {/* Animated Background Elements */}
+        <AnimatedBlobs variant="blue" />
+        <GlowingOrbs />
+        <AnimatedGrid />
+        
+        {/* Section Fade Transition - Top */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-transparent pointer-events-none z-[5]" />
+        
+        <div className="max-w-2xl mx-auto text-center relative z-10">
           <SectionHeader 
             icon={Send} 
             title="Get In Touch" 
@@ -1148,6 +1533,7 @@ export default function PortfolioPage() {
       </footer>
 
       {/* Avatar */}
+      {/*
       <motion.div 
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: avatarOpacity, scale: 1 }}
@@ -1163,6 +1549,7 @@ export default function PortfolioPage() {
           unoptimized
         />
       </motion.div>
+      */}
 
       {/* ChatBot */}
       <ChatBot />
