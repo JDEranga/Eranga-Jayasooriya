@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://erangajayasooriya.com'),
   title: {
-    default: "Eranga Jayasooriya",
+    default: "Eranga Jayasooriya | Full Stack Developer & AI Engineer",
     template: "%s | Eranga Jayasooriya",
   },
   description:
@@ -79,12 +82,14 @@ export const metadata: Metadata = {
     creator: "@erangajayasooriya",
   },
   verification: {
-    google: "your-google-verification-code",
+    // Add your Google Search Console verification code here
+    // google: "your-verification-code",
   },
   alternates: {
     canonical: "https://erangajayasooriya.com",
   },
   category: "technology",
+  manifest: "/manifest.json",
 };
 
 // JSON-LD Structured Data
@@ -135,6 +140,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

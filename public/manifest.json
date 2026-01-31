@@ -1,0 +1,24 @@
+{
+  "name": "Eranga Jayasooriya - Full Stack Developer & AI Engineer",
+  "short_name": "Eranga Jayasooriya",
+  "description": "Full Stack Developer & AI Engineer specializing in React, Next.js, Node.js, Python, and AI/ML applications",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
