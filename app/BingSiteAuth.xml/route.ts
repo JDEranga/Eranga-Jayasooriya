@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 export async function GET() {
   const xmlContent = `<?xml version="1.0"?>
 <users>
@@ -5,8 +7,10 @@ export async function GET() {
 </users>`;
 
   return new Response(xmlContent, {
+    status: 200,
     headers: {
       'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=3600',
     },
   });
 }
