@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/api/',
       },
     ],
-    sitemap: 'https://erangajayasooriya.com/sitemap.xml',
+    sitemap: 'https://eranga-jayasooriya.vercel.app/sitemap.xml',
   }
 }

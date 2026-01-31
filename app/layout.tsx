@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://erangajayasooriya.com'),
+  metadataBase: new URL('https://eranga-jayasooriya.vercel.app'),
   title: {
     default: "Eranga Jayasooriya | Full Stack Developer & AI Engineer",
     template: "%s | Eranga Jayasooriya",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://erangajayasooriya.com",
+    url: "https://eranga-jayasooriya.vercel.app",
     siteName: "Eranga Jayasooriya Portfolio",
     title: "Eranga Jayasooriya | Full Stack Developer & AI Engineer",
     description:
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     // google: "your-verification-code",
   },
   alternates: {
-    canonical: "https://erangajayasooriya.com",
+    canonical: "https://eranga-jayasooriya.vercel.app",
   },
   category: "technology",
   manifest: "/manifest.json",
@@ -97,8 +97,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Eranga Jayasooriya",
-  url: "https://erangajayasooriya.com",
-  image: "https://erangajayasooriya.com/jd.jpg",
+  url: "https://eranga-jayasooriya.vercel.app",
+  image: "https://eranga-jayasooriya.vercel.app/jd.jpg",
   sameAs: [
     "https://github.com/erangajayasooriya",
     "https://linkedin.com/in/erangajayasooriya",

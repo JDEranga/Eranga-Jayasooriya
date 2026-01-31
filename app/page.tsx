@@ -1464,10 +1464,12 @@ export default function PortfolioPage() {
 
       {/* Contact Section */}
       <section id="contact" ref={contactRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
-        {/* Animated Background Elements */}
-        <AnimatedBlobs variant="blue" />
-        <GlowingOrbs />
-        <AnimatedGrid />
+        {/* Animated Background Elements - Hidden on mobile to prevent layout issues */}
+        <div className="hidden md:block">
+          <AnimatedBlobs variant="blue" />
+          <GlowingOrbs />
+          <AnimatedGrid />
+        </div>
         
         {/* Section Fade Transition - Top */}
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-transparent pointer-events-none z-[5]" />
