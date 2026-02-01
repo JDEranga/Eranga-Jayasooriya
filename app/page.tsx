@@ -862,6 +862,13 @@ export default function PortfolioPage() {
       tech: ["Next.js", "React", "Tailwind"],
       link: "https://queens-residence.vercel.app/",
       image: "/queens.png"
+    },
+    {
+      title: "Paramitha Puramu Foundation",
+      description: "Modern web site with elegant design",
+      tech: ["Next.js", "React", "Tailwind"],
+      link: "https://paramitha-puramu-foundation.vercel.app/",
+      image: "/paramitha.png"
     }
   ];
 
