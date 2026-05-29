@@ -190,7 +190,7 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 z-50 w-[360px] h-[500px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-[360px] h-[500px] bg-[#0a101d] rounded-2xl shadow-2xl border border-slate-700 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-sky-500 to-sky-600 p-4 flex items-center justify-between">
@@ -207,14 +207,14 @@ export default function ChatBot() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                className="p-2 hover:bg-[#0a101d]/10 rounded-full transition-colors"
               >
                 <X size={20} className="text-white" />
               </motion.button>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#060b14]">
               {messages.length === 0 && (
                 <div className="text-center py-8">
                   <motion.div
@@ -224,7 +224,7 @@ export default function ChatBot() {
                   >
                     <Image src="/jd.jpg" alt="Eranga" width={64} height={64} className="object-cover" />
                   </motion.div>
-                  <p className="text-slate-600 font-medium">Hi! I'm Eranga 👋</p>
+                  <p className="text-slate-300 font-medium">Hi! I'm Eranga 👋</p>
                   <p className="text-slate-400 text-sm mt-1">Ask me about my skills, projects, or experience!</p>
                 </div>
               )}
@@ -246,14 +246,14 @@ export default function ChatBot() {
                     className={`max-w-[75%] p-3 rounded-2xl ${
                       message.role === 'user'
                         ? 'bg-gradient-to-r from-sky-500 to-sky-600 text-white rounded-br-md'
-                        : 'bg-white text-slate-700 border border-slate-200 rounded-bl-md shadow-sm'
+                        : 'bg-[#0a101d] text-slate-200 border border-slate-700 rounded-bl-md shadow-sm'
                     }`}
                   >
                     <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                   </div>
                   {message.role === 'user' && (
-                    <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center flex-shrink-0">
-                      <User size={16} className="text-slate-600" />
+                    <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center flex-shrink-0">
+                      <User size={16} className="text-slate-300" />
                     </div>
                   )}
                 </motion.div>
@@ -268,7 +268,7 @@ export default function ChatBot() {
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-sky-100">
                     <Image src="/jd.jpg" alt="Eranga" width={32} height={32} className="object-cover" />
                   </div>
-                  <div className="bg-white text-slate-700 border border-slate-200 rounded-2xl rounded-bl-md p-3 shadow-sm">
+                  <div className="bg-[#0a101d] text-slate-200 border border-slate-700 rounded-2xl rounded-bl-md p-3 shadow-sm">
                     <div className="flex items-center gap-2">
                       <Loader2 size={16} className="animate-spin text-sky-500" />
                       <span className="text-sm text-slate-400">Typing...</span>
@@ -281,7 +281,7 @@ export default function ChatBot() {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-slate-200 bg-white">
+            <div className="p-4 border-t border-slate-700 bg-[#0a101d]">
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -289,7 +289,7 @@ export default function ChatBot() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
-                  className="flex-1 px-4 py-2 bg-slate-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all"
+                  className="flex-1 px-4 py-2 bg-slate-800 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all"
                   disabled={isLoading}
                 />
                 <motion.button

@@ -331,13 +331,13 @@ function FloatingShapes() {
         >
           {shape.type === 'circle' && (
             <div
-              className="rounded-full border-2 border-sky-400/60 bg-sky-400/20"
+              className="rounded-full border-2 border-white/10 bg-white/5"
               style={{ width: shape.size, height: shape.size }}
             />
           )}
           {shape.type === 'square' && (
             <div
-              className="rounded-xl border-2 border-sky-400/60 bg-sky-400/20"
+              className="rounded-xl border-2 border-white/10 bg-white/5"
               style={{ width: shape.size, height: shape.size }}
             />
           )}
@@ -454,7 +454,7 @@ function GlowingOrbs() {
           opacity: [0.4, 0.7, 0.4],
         }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 w-56 h-56 bg-sky-400/50 rounded-full blur-[60px]"
+        className="absolute top-1/4 left-1/4 w-56 h-56 bg-sky-400/10 rounded-full blur-[60px]"
       />
       <motion.div
         animate={{
@@ -462,7 +462,7 @@ function GlowingOrbs() {
           opacity: [0.45, 0.25, 0.45],
         }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-400/50 rounded-full blur-[60px]"
+        className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-400/10 rounded-full blur-[60px]"
       />
       <motion.div
         animate={{
@@ -470,7 +470,7 @@ function GlowingOrbs() {
           opacity: [0.35, 0.6, 0.35],
         }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute top-1/2 right-1/3 w-48 h-48 bg-sky-400/45 rounded-full blur-[60px]"
+        className="absolute top-1/2 right-1/3 w-48 h-48 bg-sky-400/10 rounded-full blur-[60px]"
       />
       <motion.div
         animate={{
@@ -478,7 +478,7 @@ function GlowingOrbs() {
           opacity: [0.4, 0.55, 0.4],
         }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-        className="absolute bottom-1/3 left-1/3 w-44 h-44 bg-cyan-400/45 rounded-full blur-[60px]"
+        className="absolute bottom-1/3 left-1/3 w-44 h-44 bg-cyan-400/10 rounded-full blur-[60px]"
       />
     </div>
   );
@@ -546,7 +546,7 @@ function CodeRain() {
       {[...Array(columns)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute text-sky-500/70 font-mono text-sm font-medium"
+          className="absolute text-sky-500/20 font-mono text-sm font-medium"
           style={{ left: `${(i / columns) * 100}%` }}
           animate={{
             y: ['-100%', '100%'],
@@ -603,7 +603,7 @@ function ProjectCard({
       />
       
       <div 
-        className="relative bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-2xl hover:border-slate-200 transition-all duration-500 h-full flex flex-col cursor-pointer overflow-hidden"
+        className="relative bg-[#0a101d] rounded-2xl shadow-md shadow-sky-900/20 border border-slate-800/50 hover:shadow-2xl hover:border-slate-700 transition-all duration-500 h-full flex flex-col cursor-pointer overflow-hidden"
         onClick={onImageClick}
       >
         {/* Image Section */}
@@ -636,16 +636,16 @@ function ProjectCard({
                 target="_blank" 
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 flex items-center justify-center"
+                className="p-2 bg-[#0a101d]/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-[#0a101d] hover:scale-110 transition-all duration-300 flex items-center justify-center"
               >
-                <ExternalLink size={16} className="text-slate-700" />
+                <ExternalLink size={16} className="text-slate-200" />
               </a>
             </motion.div>
 
             {/* Project Title on Image */}
             <div className="absolute bottom-0 left-0 right-0 p-4">
               <motion.h3 
-                className="text-xl font-bold text-white drop-shadow-lg"
+                className="text-lg font-bold text-slate-100 tracking-tight drop-shadow-lg"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.15 + 0.2 }}
@@ -659,7 +659,7 @@ function ProjectCard({
         {/* Content Section */}
         <div className="p-5 flex flex-col flex-grow">
           {/* Description */}
-          <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
+          <p className="text-slate-300 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
             {project.description}
           </p>
           
@@ -672,7 +672,7 @@ function ProjectCard({
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 + techIndex * 0.05 + 0.3 }}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="text-xs px-3 py-1.5 bg-gradient-to-r from-sky-500/20 to-sky-500/20 rounded-full border border-blue-500/30 hover:border-blue-400 transition-all duration-300 hover:scale-105"
+                className="text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-full hover:border-sky-400/50 hover:bg-sky-400/10 hover:text-sky-300 transition-all duration-300 hover:scale-105"
               >
                 {tech}
               </motion.span>
@@ -681,7 +681,7 @@ function ProjectCard({
 
           {/* View Details Button */}
           <motion.div 
-            className="mt-4 pt-4 border-t border-slate-100"
+            className="mt-4 pt-4 border-t border-slate-800/50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: index * 0.15 + 0.4 }}
@@ -712,7 +712,7 @@ function SkillBadge({ skill, index }: { skill: string; index: number }) {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, delay: index * 0.03 }}
       whileHover={{ scale: 1.08, y: -2 }}
-      className="px-4 py-2 bg-gradient-to-r from-sky-500/20 to-sky-500/20 rounded-full text-sm border border-blue-500/30 hover:border-blue-400 transition-all duration-300 hover:scale-105 cursor-default"
+      className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm hover:border-sky-400/50 hover:bg-sky-400/10 hover:text-sky-300 transition-all duration-300 hover:scale-105 cursor-default"
     >
       {skill.trim()}
     </motion.span>
@@ -728,14 +728,14 @@ function SocialLink({ href, icon: Icon, label }: { href: string; icon: React.Com
       rel="noopener noreferrer"
       whileHover={{ scale: 1.1, y: -2 }}
       whileTap={{ scale: 0.95 }}
-      className="group relative p-4 bg-white rounded-2xl shadow-sm border border-sky-200 hover:shadow-lg hover:border-sky-200 hover:bg-gradient-to-br from-skyblue-50 to-cyan-50 transition-all duration-300"
+      className="group relative p-4 bg-[#0a101d] rounded-2xl shadow-md shadow-sky-900/20 border border-sky-900/50 hover:shadow-lg hover:border-sky-900/50 hover:bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-300"
       aria-label={label}
     >
-      <Icon size={24} className="text-slate-600 group-hover:text-sky-600 transition-colors" />
+      <Icon size={24} className="text-slate-300 group-hover:text-sky-600 transition-colors" />
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileHover={{ opacity: 1, y: 0 }}
-        className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-slate-500 whitespace-nowrap"
+        className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-slate-400 whitespace-nowrap"
       >
         {label}
       </motion.div>
@@ -759,12 +759,12 @@ function SectionHeader({ icon: Icon, title, subtitle, titleClassName }: { icon: 
       <motion.div
         whileHover={{ rotate: 360, scale: 1.1 }}
         transition={{ duration: 0.6 }}
-        className="p-4 bg-gradient-to-br from-slate-100 to-slate-50 rounded-2xl mb-4 shadow-sm"
+        className="p-4 bg-gradient-to-br from-slate-100 to-[#060b14] rounded-2xl mb-4 shadow-md shadow-sky-900/20"
       >
-        <Icon className="text-slate-700" size={28} />
+        <Icon className="text-slate-200" size={28} />
       </motion.div>
-      <h2 className={`text-3xl md:text-4xl font-bold text-center ${titleClassName || 'text-slate-800'}`}>{title}</h2>
-      {subtitle && <p className="text-slate-500 mt-2 text-center max-w-md">{subtitle}</p>}
+      <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-center ${titleClassName || 'text-slate-100'}`}>{title}</h2>
+      {subtitle && <p className="text-sm text-slate-400 mt-2 text-center max-w-md">{subtitle}</p>}
     </motion.div>
   );
 }
@@ -867,7 +867,7 @@ export default function PortfolioPage() {
       title: "Paramitha Puramu Foundation",
       description: "Modern web site with elegant design",
       tech: ["Next.js", "React", "Tailwind"],
-      link: "https://paramitha-puramu-foundation.vercel.app/",
+      link: "https://paramithapuramu.org/",
       image: "/paramitha.png"
     }
   ];
@@ -941,7 +941,7 @@ export default function PortfolioPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50 text-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-[#060b14] via-[#0a101d] to-[#060b14] text-slate-50">
       {/* Subtle Background Pattern */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgba(148,163,184,0.15)_1px,_transparent_0)] bg-[size:40px_40px]" />
@@ -971,7 +971,7 @@ export default function PortfolioPage() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrollY > 50 
-            ? 'bg-white/80 backdrop-blur-xl shadow-sm border-b border-slate-100 rounded-b-2xl' 
+            ? 'bg-[#060b14]/70 backdrop-blur-2xl shadow-md shadow-sky-900/20 border-b border-slate-800/50 rounded-b-2xl' 
             : 'bg-transparent'
         }`}
       >
@@ -986,7 +986,7 @@ export default function PortfolioPage() {
                 alt="DP"
                 width={44}
                 height={44}
-                className="rounded-xl ring-2 ring-slate-100"
+                className="rounded-xl ring-2 ring-slate-800"
               />
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
@@ -995,13 +995,13 @@ export default function PortfolioPage() {
               />
             </div>
             <div>
-              <div className="text-lg font-bold text-slate-800">Eranga Jayasooriya</div>
-              <div className="text-xs text-slate-500">Software Engineer | AI Enthusiast</div>
+              <div className="text-base font-bold text-slate-100 tracking-tight">Eranga Jayasooriya</div>
+              <div className="text-xs text-slate-400">Software Engineer | AI Enthusiast</div>
             </div>
           </motion.div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-1 bg-slate-100/50 backdrop-blur-sm rounded-full p-1.5">
+          <div className="hidden md:flex items-center gap-1 bg-white/5 backdrop-blur-md border border-white/5 rounded-full p-1.5">
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
@@ -1010,8 +1010,8 @@ export default function PortfolioPage() {
                 whileTap={{ scale: 0.95 }}
                 className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                   activeSection === item.id 
-                    ? 'bg-white text-slate-900 shadow-sm' 
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-[#0a101d] text-slate-50 shadow-md shadow-sky-900/20' 
+                    : 'text-slate-300 hover:text-slate-50'
                 }`}
               >
                 {item.label}
@@ -1022,7 +1022,7 @@ export default function PortfolioPage() {
           {/* Mobile Menu Button */}
           <motion.button 
             whileTap={{ scale: 0.9 }}
-            className="md:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition-colors"
+            className="md:hidden p-2 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <AnimatePresence mode="wait">
@@ -1059,7 +1059,7 @@ export default function PortfolioPage() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-100 rounded-2xl"
+              className="md:hidden bg-[#0a101d]/95 backdrop-blur-xl border-t border-slate-800/50 rounded-2xl"
             >
               <div className="flex flex-col gap-1 px-6 py-4">
                 {navItems.map((item, index) => (
@@ -1074,8 +1074,8 @@ export default function PortfolioPage() {
                     }}
                     className={`px-4 py-3 text-left text-sm font-medium rounded-xl transition-all ${
                       activeSection === item.id 
-                        ? 'bg-slate-100 text-slate-900' 
-                        : 'text-slate-600 hover:bg-slate-50'
+                        ? 'bg-slate-800 text-slate-50' 
+                        : 'text-slate-300 hover:bg-[#060b14]'
                     }`}
                   >
                     {item.label}
@@ -1096,7 +1096,7 @@ export default function PortfolioPage() {
         <AnimatedLines />
         
         {/* Section Fade Transition - Bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-[5]" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#060b14] to-transparent pointer-events-none z-[5]" />
         
         {/* 3D Model - Left Side */}
         <motion.div
@@ -1145,13 +1145,13 @@ export default function PortfolioPage() {
                   alt="Eranga Jayasooriya"
                   width={140}
                   height={140}
-                  className="rounded-full relative z-10 ring-4 ring-white shadow-xl"
+                  className="rounded-full relative z-10 ring-4 ring-white/10 p-1 bg-white/5 backdrop-blur-md shadow-xl"
                 />
               </div>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="mb-2">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full text-sm text-slate-600 font-medium">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-sm text-slate-300 font-medium tracking-wide">
                 <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
                 Available for opportunities
               </span>
@@ -1159,7 +1159,7 @@ export default function PortfolioPage() {
             
             <motion.h1 
               variants={fadeInUp}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-slate-800"
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter mb-6 text-slate-100"
             >
               Hi, I'm{' '}
               <motion.span
@@ -1172,7 +1172,7 @@ export default function PortfolioPage() {
                   ease: "linear"
                 }}
                 style={{ backgroundSize: "200% 200%" }}
-                className="bg-gradient-to-r from-sky-900 via-sky-600 to-sky-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-white via-sky-200 to-sky-500 bg-clip-text text-transparent"
               >
                 Eranga
               </motion.span>
@@ -1180,7 +1180,7 @@ export default function PortfolioPage() {
             
             <motion.p 
               variants={fadeInUp}
-              className="text-xl md:text-2xl text-slate-600 mb-8 font-light"
+              className="text-base md:text-lg text-slate-400/90 mb-10 font-normal tracking-wide"
             >
               Full Stack Developer & Creative Problem Solver
             </motion.p>
@@ -1202,13 +1202,13 @@ export default function PortfolioPage() {
                     boxShadow: "0 20px 25px -5px rgb(59 130 246 / 0.4), 0 8px 10px -6px rgb(59 130 246 / 0.4)"
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full text-sm font-medium shadow-md cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-slate-800/800 text-slate-100 rounded-full text-sm font-medium shadow-md cursor-pointer"
                 >
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                   >
-                    <Icon size={16} className="text-white" />
+                    <Icon size={16} className="text-slate-100" />
                   </motion.div>
                   {name}
                 </motion.span>
@@ -1231,7 +1231,7 @@ export default function PortfolioPage() {
                 onClick={() => projectsRef.current?.scrollIntoView({ behavior: 'smooth' })}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.60 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-800 text-white rounded-full font-semibold shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-full font-semibold shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300"
               >
                 View My Work
                 <ArrowRight size={18} />
@@ -1253,7 +1253,7 @@ export default function PortfolioPage() {
             icon={User} 
             title="About Me" 
             subtitle="Get to know my story and expertise"
-            titleClassName="bg-gradient-to-r from-sky-800 to-sky-600 bg-clip-text text-transparent"
+            titleClassName="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent"
           />
           
           <motion.div
@@ -1261,7 +1261,7 @@ export default function PortfolioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 relative overflow-hidden"
+            className="bg-[#0a101d] rounded-3xl p-8 md:p-12 shadow-md shadow-sky-900/20 border border-slate-800/50 relative overflow-hidden"
           >
             {/* Resume Button */}
             <motion.a 
@@ -1270,7 +1270,7 @@ export default function PortfolioPage() {
               rel="noopener noreferrer" 
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="absolute top-6 right-6 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-sky-600 to-sky-800 text-white rounded-full text-sm font-medium shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 z-10"
+              className="absolute top-6 right-6 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-full text-sm font-medium shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 z-10"
             >
               <Download size={16} />
               Resume
@@ -1282,7 +1282,7 @@ export default function PortfolioPage() {
                 whileHover={{ scale: 1.05 }}
                 className="relative flex-shrink-0"
               >
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden ring-4 ring-slate-100">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden ring-4 ring-slate-800">
                   <Image
                     src="/jd.jpg"
                     alt="Eranga Jayasooriya"
@@ -1294,11 +1294,11 @@ export default function PortfolioPage() {
               </motion.div>
 
               <div className="flex-grow text-center md:text-left md:pr-24">
-                <p className="text-lg text-slate-600 mb-4 leading-relaxed">
+                <p className="text-base text-slate-300/90 mb-4 leading-relaxed">
                   I'm a passionate full-stack developer with a deep focus on AI-powered applications. I am interested in building intelligent, modern web and mobile experiences 
                   by seamlessly integrating cutting-edge AI and machine learning capabilities.
                 </p>
-                <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                <p className="text-base text-slate-300/90 mb-6 leading-relaxed">
                   I love turning complex challenges into simple, beautiful, and intuitive solutions 
                   that leverage the power of artificial intelligence. When I'm not coding, you can find me exploring new technologies and contributing to open-source projects.
                 </p>
@@ -1306,10 +1306,10 @@ export default function PortfolioPage() {
             </div>
 
             {/* Skills */}
-            <div className="mt-10 pt-8 border-t border-slate-100">
+            <div className="mt-10 pt-8 border-t border-slate-800/50">
               <div className="flex items-center gap-2 mb-6">
                 <Zap size={20} className="text-slate-400" />
-                <h3 className="text-lg font-semibold text-slate-800">Technical Skills</h3>
+                <h3 className="text-base font-semibold text-slate-100">Technical Skills</h3>
               </div>
               <motion.div 
                 initial="hidden"
@@ -1328,22 +1328,22 @@ export default function PortfolioPage() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" ref={projectsRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+      <section id="projects" ref={projectsRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-[#060b14] via-[#0a101d] to-[#060b14]">
         {/* Animated Background Elements */}
         <AnimatedBlobs variant="purple" />
         <FloatingShapes />
         <CodeRain />
         
         {/* Section Fade Transitions */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-transparent pointer-events-none z-[5]" />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-[5]" />
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#060b14] to-transparent pointer-events-none z-[5]" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#060b14] to-transparent pointer-events-none z-[5]" />
         
         <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeader 
             icon={Briefcase} 
             title="Projects" 
             subtitle="A selection of my recent work"
-            titleClassName="bg-gradient-to-r from-sky-800 to-sky-600 bg-clip-text text-transparent"
+            titleClassName="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent"
           />
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1364,22 +1364,22 @@ export default function PortfolioPage() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" ref={experienceRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+      <section id="experience" ref={experienceRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-[#060b14] via-[#0a101d] to-[#060b14]">
         {/* Animated Background Elements */}
         <AnimatedBlobs variant="default" />
         <ParticlesBackground count={25} />
         <AnimatedLines />
         
         {/* Section Fade Transitions */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-transparent pointer-events-none z-[5]" />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-[5]" />
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#060b14] to-transparent pointer-events-none z-[5]" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#060b14] to-transparent pointer-events-none z-[5]" />
         
         <div className="max-w-4xl mx-auto relative z-10">
           <SectionHeader 
             icon={Award} 
             title="Experience" 
             subtitle="My professional journey"
-            titleClassName="bg-gradient-to-r from-sky-800 to-sky-600 bg-clip-text text-transparent"
+            titleClassName="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent"
           />
           
           <div className="relative">
@@ -1403,8 +1403,8 @@ export default function PortfolioPage() {
                     whileHover={{ scale: 1.2, rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-sky-600 rounded-full flex items-center justify-center shadow-lg shadow-sky-500/30">
-                      <IconComponent className="text-white" size={24} />
+                    <div className="w-16 h-16 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center shadow-lg shadow-sky-500/30">
+                      <IconComponent className="text-sky-400" size={24} />
                     </div>
                   </motion.div>
                   
@@ -1414,19 +1414,19 @@ export default function PortfolioPage() {
                     whileHover={{ y: -5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-lg hover:border-sky-100 transition-all duration-300">
+                    <div className="bg-[#0a101d] rounded-2xl p-6 shadow-md shadow-sky-900/20 border border-slate-800/50 hover:shadow-lg hover:border-sky-100 transition-all duration-300">
                       {/* Period Badge */}
                       <motion.div 
-                        className="inline-flex items-center gap-2 px-3 py-1 bg-sky-50 text-sky-600 rounded-full text-sm font-medium mb-3"
+                        className="inline-flex items-center gap-2 px-3 py-1 bg-sky-900/30 text-sky-600 rounded-full text-sm font-medium mb-3"
                         whileHover={{ scale: 1.05 }}
                       >
                         <Calendar size={14} />
                         {exp.period}
                       </motion.div>
                       
-                      <h3 className="text-xl font-bold text-slate-800 mb-1">{exp.title}</h3>
+                      <h3 className="text-lg font-bold text-slate-100 mb-1 tracking-tight">{exp.title}</h3>
                       
-                      <div className="flex items-center gap-4 text-slate-500 text-sm mb-3">
+                      <div className="flex items-center gap-4 text-slate-400 text-sm mb-3">
                         <span className="flex items-center gap-1">
                           <Building2 size={14} />
                           {exp.company}
@@ -1437,7 +1437,7 @@ export default function PortfolioPage() {
                         </span>
                       </div>
                       
-                      <p className="text-slate-600 mb-4 leading-relaxed">{exp.description}</p>
+                      <p className="text-slate-300 mb-4 leading-relaxed">{exp.description}</p>
                       
                       {/* Achievements */}
                       <div className="space-y-2">
@@ -1448,7 +1448,7 @@ export default function PortfolioPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: achIndex * 0.1 + 0.3 }}
-                            className="flex items-center gap-2 text-sm text-slate-500"
+                            className="flex items-center gap-2 text-sm text-slate-400"
                           >
                             <motion.div
                               animate={{ scale: [1, 1.2, 1] }}
@@ -1470,7 +1470,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" ref={contactRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+      <section id="contact" ref={contactRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-[#060b14] via-[#0a101d] to-[#060b14]">
         {/* Animated Background Elements - Hidden on mobile to prevent layout issues */}
         <div className="hidden md:block">
           <AnimatedBlobs variant="blue" />
@@ -1479,14 +1479,14 @@ export default function PortfolioPage() {
         </div>
         
         {/* Section Fade Transition - Top */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-transparent pointer-events-none z-[5]" />
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#060b14] to-transparent pointer-events-none z-[5]" />
         
         <div className="max-w-2xl mx-auto text-center relative z-10">
           <SectionHeader 
             icon={Send} 
             title="Get In Touch" 
             subtitle="Let's create something amazing together"
-            titleClassName="bg-gradient-to-r from-sky-800 to-sky-600 bg-clip-text text-transparent"
+            titleClassName="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent"
           />
           
           <motion.div
@@ -1494,9 +1494,9 @@ export default function PortfolioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100"
+            className="bg-[#0a101d] rounded-3xl p-8 md:p-12 shadow-md shadow-sky-900/20 border border-slate-800/50"
           >
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+            <p className="text-base text-slate-300/90 mb-8 leading-relaxed">
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
             
@@ -1505,7 +1505,7 @@ export default function PortfolioPage() {
                 href="mailto:jaderanga@gmail.com"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.60 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-800 text-white rounded-full font-semibold shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-full font-semibold shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300"
               >
                 <Mail size={20} />
                 Say Hello
@@ -1515,14 +1515,14 @@ export default function PortfolioPage() {
                 href="tel:+94719671533"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.60 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-800 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300"
               >
                 <Send size={20} />
                 Contact Me: (+94) 71-967-1533
               </motion.a>
             </div>
             
-            <div className="mt-10 pt-8 border-t border-slate-100">
+            <div className="mt-10 pt-8 border-t border-slate-800/50">
               <p className="text-sm text-slate-400 mb-4">Or find me on</p>
               <div className="flex gap-4 justify-center">
                 <SocialLink href="https://github.com/JDEranga" icon={Github} label="GitHub" />
@@ -1535,8 +1535,8 @@ export default function PortfolioPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 text-center border-t border-slate-100">
-        <p className="text-slate-500 text-sm">
+      <footer className="py-8 text-center border-t border-slate-800/50">
+        <p className="text-slate-400 text-sm">
           © {new Date().getFullYear()} Eranga Jayasooriya. Software Engineer | AI Enthusiast
         </p>
       </footer>
@@ -1593,9 +1593,9 @@ export default function PortfolioPage() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
+                className="absolute top-4 right-4 p-2 bg-[#0a101d]/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-[#0a101d] transition-colors"
               >
-                <X size={20} className="text-slate-700" />
+                <X size={20} className="text-slate-200" />
               </motion.button>
             </motion.div>
           </motion.div>
@@ -1632,9 +1632,9 @@ export default function PortfolioPage() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsFoodModalOpen(false)}
-                className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
+                className="absolute top-4 right-4 p-2 bg-[#0a101d]/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-[#0a101d] transition-colors"
               >
-                <X size={20} className="text-slate-700" />
+                <X size={20} className="text-slate-200" />
               </motion.button>
             </motion.div>
           </motion.div>
@@ -1671,9 +1671,9 @@ export default function PortfolioPage() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
+                className="absolute top-4 right-4 p-2 bg-[#0a101d]/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-[#0a101d] transition-colors"
               >
-                <X size={20} className="text-slate-700" />
+                <X size={20} className="text-slate-200" />
               </motion.button>
             </motion.div>
           </motion.div>
