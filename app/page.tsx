@@ -8,6 +8,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import ChatBot from './components/ChatBot';
+import Sidebar from './components/Sidebar';
 
 // 3D Laptop Component
 function Laptop() {
@@ -778,6 +779,7 @@ export default function PortfolioPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFoodModalOpen, setIsFoodModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
   const homeRef = useRef<HTMLElement | null>(null);
   const aboutRef = useRef<HTMLElement | null>(null);
@@ -941,7 +943,16 @@ export default function PortfolioPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#060b14] via-[#0a101d] to-[#060b14] text-slate-50">
+    <div className={`min-h-screen bg-gradient-to-b from-[#060b14] via-[#0a101d] to-[#060b14] text-slate-50 transition-all duration-300 ${isSidebarExpanded ? 'md:pl-60' : 'md:pl-20'}`}>
+      {/* Sidebar for Desktop */}
+      <div className="hidden md:block">
+        <Sidebar 
+          activeSection={activeSection} 
+          navItems={navItems} 
+          isExpanded={isSidebarExpanded} 
+          setIsExpanded={setIsSidebarExpanded} 
+        />
+      </div>
       {/* Subtle Background Pattern */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgba(148,163,184,0.15)_1px,_transparent_0)] bg-[size:40px_40px]" />
@@ -969,13 +980,13 @@ export default function PortfolioPage() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 right-0 z-40 transition-all duration-500 ${isSidebarExpanded ? 'md:left-60' : 'md:left-20'} left-0 ${
           scrollY > 50 
             ? 'bg-[#060b14]/70 backdrop-blur-2xl shadow-md shadow-sky-900/20 border-b border-slate-800/50 rounded-b-2xl' 
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="w-full px-6 md:px-8 py-4 flex justify-between items-center">
           <motion.div 
             whileHover={{ scale: 1.02 }}
             className="flex items-center gap-3"
